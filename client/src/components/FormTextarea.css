@@ -1,0 +1,42 @@
+.form-textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 2px solid var(--color-sepia-brown);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background: var(--color-beige);
+  color: var(--color-text-dark);
+  transition: all 0.3s ease;
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent-gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+}
+
+.form-textarea.error {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+}
+
+.form-textarea::placeholder {
+  color: var(--color-sepia-brown);
+  opacity: 0.7;
+}
+
+.char-count {
+  text-align: right;
+  margin-top: var(--spacing-xs);
+  font-size: 0.875rem;
+  color: var(--color-sepia-brown);
+}
+
+.char-count-warning {
+  color: #dc3545;
+  font-weight: 600;
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "d805e057-e854-4bb1-8910-5e35b34da6b5",
+    "username": "itsbenz_1",
+    "email": "benrezegmedx@gmail.com",
+    "password": "$2a$10$AViGdSrONl6qLex8GTdrBeTKfBPRcC37qdGw6Iiqo0ThrEZomHWt.",
+    "role": "admin",
+    "roleRequest": "user",
+    "createdAt": "2025-08-10T22:50:46.732Z",
+    "isBanned": false
+  },
+  {
+    "id": "c5ff005d-b3fc-46be-b519-e19c34efc9a2",
+    "username": "itsbenz_2",
+    "email": "contact@ben-rezeg.tn",
+    "password": "$2a$10$rLWRlQ/JanZeJ/wAy.ly2.t9v2HuwANQCsufykouwcmmu2pX5GpDq",
+    "role": "user",
+    "roleRequest": "moderator",
+    "createdAt": "2025-08-10T22:54:57.412Z",
+    "isBanned": false
+  }
+]
