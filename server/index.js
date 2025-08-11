@@ -6,6 +6,8 @@ const fs = require('fs-extra');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 
+
+const http = require('http');
 const app = express();
 const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET || 'gtarp-whitelist-secret-key-2024';
@@ -496,7 +498,13 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-app.listen(PORT, () => {
+
+// --- Socket.IO Chat Integration ---
+const server = http.createServer(app);
+const setupChat = require('./chat');
+setupChat(server); // Attach Socket.IO to HTTP server
+
+server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Data directory: ${dataDir}`);
 });

@@ -194,7 +194,6 @@ const WhitelistForm = () => {
           <form onSubmit={handleSubmit} className="whitelist-form">
             {whitelistQuestions.map((question, index) => {
               const commonProps = {
-                key: question.id,
                 label: question.label,
                 required: question.required,
                 error: errors[question.id]
@@ -205,6 +204,7 @@ const WhitelistForm = () => {
                 case 'text':
                   return (
                     <FormInput
+                      key={question.id}
                       {...commonProps}
                       type="text"
                       name={question.id}
@@ -217,6 +217,7 @@ const WhitelistForm = () => {
                 case 'number':
                   return (
                     <FormInput
+                      key={question.id}
                       {...commonProps}
                       type="number"
                       name={question.id}
@@ -231,6 +232,7 @@ const WhitelistForm = () => {
                 case 'textarea':
                   return (
                     <FormTextarea
+                      key={question.id}
                       {...commonProps}
                       name={question.id}
                       value={formData[question.id]}
@@ -244,6 +246,7 @@ const WhitelistForm = () => {
                 case 'select':
                   return (
                     <FormSelect
+                      key={question.id}
                       {...commonProps}
                       name={question.id}
                       value={formData[question.id]}
@@ -256,6 +259,7 @@ const WhitelistForm = () => {
                 case 'checkbox':
                   return (
                     <FormCheckbox
+                      key={question.id}
                       {...commonProps}
                       checked={formData[question.id]}
                       onChange={(e) => handleChange({
@@ -271,6 +275,7 @@ const WhitelistForm = () => {
                 case 'file':
                   return (
                     <FormFileUpload
+                      key={question.id}
                       {...commonProps}
                       value={formData[question.id]}
                       onChange={(value) => setFormData(prev => ({

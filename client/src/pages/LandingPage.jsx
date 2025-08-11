@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../App';
 import './LandingPage.css';
+import Logo from '../assets/logo.svg';
+import RoleplayScape from '../assets/Roleplay.webp';
 
 const LandingPage = () => {
   const { user } = useContext(AuthContext);
@@ -48,6 +50,16 @@ const LandingPage = () => {
             </div>
 
             <div className="cta-section">
+            {/* Gallery Section */}
+            <div className="gallery-section">
+              <h3 className="gallery-title">Gallery</h3>
+              <div className="gallery-grid">
+                <img src={Logo} alt="Logo" className="gallery-img" />
+                <img src={RoleplayScape} alt="Roleplay Scene" className="gallery-img" />
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="City" className="gallery-img" />
+                <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Roleplay" className="gallery-img" />
+              </div>
+            </div>
               {user ? (
                 <div className="cta-buttons">
                   <Link to="/apply" className="btn btn-primary">

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import LandingPage from './pages/LandingPage';
@@ -9,6 +10,7 @@ import UserDashboard from './pages/UserDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import WhitelistForm from './pages/WhitelistForm';
 import Toast from './components/Toast';
+import SupportChat from './components/SupportChat';
 import './App.css';
 
 // Authentication Context
@@ -151,6 +153,9 @@ function App() {
         </main>
         <Footer />
         {toast && <Toast message={toast.message} type={toast.type} />}
+
+        {/* Global Support Chat Widget */}
+        <SupportChat user={user} />
       </div>
     </AuthContext.Provider>
   );
