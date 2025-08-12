@@ -1,0 +1,41 @@
+// Instructions for enabling HTTPS in your Node.js backend
+
+1. Obtain SSL certificate and key files (e.g., using Let's Encrypt):
+   - Place `fullchain.pem` and `privkey.pem` in a secure directory, e.g., `server/certs/`.
+
+2. Update your `server/index.js` to use HTTPS:
+
+// --- Add at the top ---
+const https = require('https');
+const fs = require('fs');
+
+// --- Add after your imports and before creating the server ---
+const sslOptions = {
+  key: fs.readFileSync(path.join(__dirname, 'certs', 'privkey.pem')),
+  cert: fs.readFileSync(path.join(__dirname, 'certs', 'fullchain.pem')),
+};
+
+// --- Replace the HTTP server creation and listen block ---
+// const server = http.createServer(app);
+// const setupChat = require('./chat');
+// setupChat(server); // Attach Socket.IO to HTTP server
+// server.listen(PORT, ...);
+
+const httpsServer = https.createServer(sslOptions, app);
+const setupChat = require('./chat');
+setupChat(httpsServer); // Attach Socket.IO to HTTPS server
+
+httpsServer.listen(PORT, () => {
+  console.log(`HTTPS Server running on port ${PORT}`);
+  console.log(`Data directory: ${dataDir}`);
+});
+
+3. Make sure port 5000 is open for HTTPS (TCP) in your firewall.
+
+4. Update your frontend to use `https://YOUR_DOMAIN:5000` for all API and Socket.IO calls.
+
+5. Restart your backend server.
+
+---
+
+If you need help generating SSL certificates, visit https://letsencrypt.org/getting-started/ or ask for a step-by-step guide.

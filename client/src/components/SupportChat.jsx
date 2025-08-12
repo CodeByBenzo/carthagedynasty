@@ -11,6 +11,7 @@ const SupportChat = ({ user }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const messagesEndRef = useRef(null);
+  const isRegistered = !!user?.username && user?.username !== 'Guest';
 
   useEffect(() => {
     socket.on('chat history', (msgs) => setMessages(msgs));
@@ -27,9 +28,9 @@ const SupportChat = ({ user }) => {
 
   const sendMessage = (e) => {
     e.preventDefault();
-    if (!input.trim()) return;
+    if (!input.trim() || !isRegistered) return;
     socket.emit('chat message', {
-      user: user?.username || 'Guest',
+      user: user?.username,
       text: input.trim(),
     });
     setInput('');
@@ -40,7 +41,7 @@ const SupportChat = ({ user }) => {
       <div className="chat-header">Support Chat</div>
       <div className="chat-messages">
         {messages.map((msg) => (
-          <div key={msg.id} className={`chat-message${msg.user === (user?.username || 'Guest') ? ' own' : ''}`}>
+          <div key={msg.id} className={`chat-message${msg.user === user?.username ? ' own' : ''}`}>
             <span className="chat-user">{msg.user}:</span> <span className="chat-text">{msg.text}</span>
             <span className="chat-time">{new Date(msg.timestamp).toLocaleTimeString()}</span>
           </div>
@@ -52,10 +53,14 @@ const SupportChat = ({ user }) => {
           className="chat-input"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Type your message..."
+          placeholder={isRegistered ? "Type your message..." : "Login to chat"}
+          disabled={!isRegistered}
         />
-        <button className="chat-send-btn" type="submit">Send</button>
+        <button className="chat-send-btn" type="submit" disabled={!isRegistered}>Send</button>
       </form>
+      {!isRegistered && (
+        <div className="chat-login-warning">You must be registered and logged in to chat.</div>
+      )}
     </div>
   );
 };
