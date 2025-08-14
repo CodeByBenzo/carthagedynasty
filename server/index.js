@@ -223,11 +223,6 @@ app.post('/api/applications', authenticateToken, async (req, res) => {
       return res.status(400).json({ error: 'Required fields missing' });
     }
 
-    if (roleplaySample.length < 300 || roleplaySample.length > 1000) {
-      return res.status(400).json({ error: 'Roleplay sample must be 300-1000 characters' });
-    }
-
-    // Check for placeholder/repeated text patterns
     const sample = roleplaySample.toLowerCase();
     const repeatedPatterns = [
       'qddmdqkdkm',
@@ -269,18 +264,10 @@ app.post('/api/applications', authenticateToken, async (req, res) => {
       }
 
       const newApplication = {
+        ...req.body,
         id: uuidv4(),
         userId: req.user.id,
         username: req.user.username,
-        inGameName,
-        realName: realName || '',
-        age: age || null,
-        discordTag: discordTag || '',
-        experience: experience || 'Beginner',
-        roleplaySample,
-        whyJoin: whyJoin || '',
-        attachments: attachments || [],
-        agreeToRules,
         status: 'pending',
         submittedAt: new Date().toISOString(),
         reviewedAt: null,

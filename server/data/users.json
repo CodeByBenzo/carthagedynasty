@@ -18,5 +18,15 @@
     "roleRequest": "moderator",
     "createdAt": "2025-08-10T22:54:57.412Z",
     "isBanned": false
+  },
+  {
+    "id": "8f059e00-df5e-4ce0-a635-218152781894",
+    "username": "mizou",
+    "email": "mizoughf@gmail.com",
+    "password": "$2a$10$2Ga3R3FyrKhMSZQyv.e7Cu36kV2NQaeWcHaPVHGPm7G9WIngsWJ4y",
+    "role": "user",
+    "roleRequest": "user",
+    "createdAt": "2025-08-13T20:19:13.312Z",
+    "isBanned": false
   }
 ]

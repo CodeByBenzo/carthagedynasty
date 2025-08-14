@@ -169,8 +169,8 @@ const UserDashboard = () => {
                     <p>🎉 Congratulations! Your application has been approved. You can now join our server!</p>
                     <div className="server-info">
                       <h4>Server Information:</h4>
-                      <p><strong>Server IP:</strong> connect.creativestudio.com</p>
-                      <p><strong>Discord:</strong> discord.gg/creativestudio</p>
+                      <p><strong>Server IP:</strong> cfx.carthagedynasty.com</p>
+                      <p><strong>Discord:</strong>discord.gg/3JJkHaGGRr</p>
                     </div>
                   </div>
                 )}
@@ -212,7 +212,7 @@ const UserDashboard = () => {
               {application && application.status === 'approved' && (
                 <div className="action-buttons">
                   <a 
-                    href="https://discord.gg/creativestudio" 
+                    href="https://discord.gg/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="action-btn btn btn-secondary"
@@ -252,7 +252,7 @@ const UserDashboard = () => {
             </div>
             <div className="community-links">
               <a 
-                href="https://discord.gg/creativestudio" 
+                href="https://discord.gg/3JJkHaGGRr" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="community-link"

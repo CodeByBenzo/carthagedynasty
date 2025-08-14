@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-content">
           <p className="footer-text">
-            © {currentYear} Creative Studio GTA RP. All rights reserved.
+            © {currentYear} codebybenzo. All rights reserved. 
           </p>
           <p className="footer-subtitle">
             Crafting immersive roleplay experiences

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { whitelistQuestions } from '../config/questions';
 import { AuthContext } from '../App';
 import './AdminDashboard.css';
 
@@ -377,7 +378,7 @@ const AdminDashboard = () => {
         {/* Review Modal */}
         {selectedApplication && (
           <div className="modal-overlay">
-            <div className="modal torn-paper">
+            <div className="modal torn-paper" style={{maxWidth:'1200px',width:'98vw',minHeight:'70vh',padding:'2.5em 2em'}}>
               <div className="modal-header">
                 <h3>Review Application - {selectedApplication.inGameName}</h3>
                 <button
@@ -391,41 +392,30 @@ const AdminDashboard = () => {
               <div className="modal-content">
                 <div className="app-review-details">
                   <h4>Application Details</h4>
-                  <p><strong>Username:</strong> {selectedApplication.username}</p>
-                  <p><strong>Experience:</strong> {selectedApplication.experience}</p>
-                  <p><strong>Discord:</strong> {selectedApplication.discordTag || 'Not provided'}</p>
-                  <p><strong>Age:</strong> {selectedApplication.age || 'Not provided'}</p>
-                  
-                  <div className="roleplay-sample">
-                    <h4>Roleplay Sample</h4>
-                    {selectedApplication.roleplaySample ? (
-                      <>
-                        {isPlaceholderText(selectedApplication.roleplaySample) && (
-                          <div className="placeholder-warning">
-                            ⚠️ This appears to be placeholder text
-                          </div>
-                        )}
-                        <p>{selectedApplication.roleplaySample}</p>
-                      </>
-                    ) : (
-                      <p>No roleplay sample provided</p>
-                    )}
-                  </div>
-                  
-                  <div className="why-join">
-                    <h4>Why Should They Join?</h4>
-                    {selectedApplication.whyJoin ? (
-                      <>
-                        {isPlaceholderText(selectedApplication.whyJoin) && (
-                          <div className="placeholder-warning">
-                            ⚠️ This appears to be placeholder text
-                          </div>
-                        )}
-                        <p>{selectedApplication.whyJoin}</p>
-                      </>
-                    ) : (
-                      <p>No reason provided</p>
-                    )}
+                  <div className="answers-list big-answers">
+                    {whitelistQuestions.map(q => {
+                      const value = selectedApplication[q.id];
+                      let displayValue = value;
+                      if (q.type === 'select') {
+                        const opt = q.options?.find(o => o.value === value);
+                        displayValue = opt ? opt.label : value || 'Not provided';
+                      }
+                      if ((q.id === 'roleplaySample' || q.id === 'whyJoin') && value) {
+                        displayValue = <>
+                          {isPlaceholderText(value) && (
+                            <div className="placeholder-warning">⚠️ This appears to be placeholder text</div>
+                          )}
+                          <span style={{fontSize: '1.15em', fontWeight: 500, color: '#222'}}>{value}</span>
+                        </>;
+                      }
+                      if (!value) displayValue = <span className="not-provided" style={{color:'#b00',fontWeight:600}}>Not provided</span>;
+                      return (
+                        <div key={q.id} className="answer-row" style={{marginBottom:'1.2em',padding:'1em 1.5em',background:'#f7f7fa',borderRadius:'1em',boxShadow:'0 2px 12px #0001'}}>
+                          <div className="answer-label" style={{fontSize:'1.2em',fontWeight:700,marginBottom:'0.5em',color:'#2a3a6e'}}>{q.label}</div>
+                          <div className="answer-value" style={{fontSize:'1.15em',fontWeight:500,color:'#222'}}>{displayValue}</div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
                 

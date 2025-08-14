@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../App';
 import './LandingPage.css';
-import Logo from '../assets/logo.svg';
+import Logo from '../assets/logo.png';
 import RoleplayScape from '../assets/Roleplay.webp';
 
 const LandingPage = () => {
@@ -52,12 +52,11 @@ const LandingPage = () => {
             <div className="cta-section">
             {/* Gallery Section */}
             <div className="gallery-section">
-              <h3 className="gallery-title">Gallery</h3>
+              <h3 className="gallery-title">CFX</h3>
               <div className="gallery-grid">
                 <img src={Logo} alt="Logo" className="gallery-img" />
                 <img src={RoleplayScape} alt="Roleplay Scene" className="gallery-img" />
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="City" className="gallery-img" />
-                <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Roleplay" className="gallery-img" />
+                <img src="https://img.utdstc.com/icon/bcb/fc5/bcbfc5ae3d074d8734b9f51e64f7e95d4325485e0c51661dcf3167e45d768a8d:200?auto=format&fit=crop&w=400&q=80"/>
               </div>
             </div>
               {user ? (
@@ -94,7 +93,7 @@ const LandingPage = () => {
               </p>
               <div className="project-stats">
                 <div className="stat">
-                  <span className="stat-number">150+</span>
+                  <span className="stat-number">30</span>
                   <span className="stat-label">Active Players</span>
                 </div>
                 <div className="stat">
