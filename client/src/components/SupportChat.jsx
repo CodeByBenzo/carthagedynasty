@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import io from 'socket.io-client';
 import './SupportChat.css';
 
-const socket = io('http://localhost:5000', { path: '/socket.io' });
+const socket = io('https://api.carthagedynasty.com:8443', { path: '/socket.io' });
 
 
 const SupportChat = ({ user }) => {
