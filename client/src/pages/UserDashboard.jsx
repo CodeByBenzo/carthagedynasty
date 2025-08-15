@@ -15,7 +15,7 @@ const UserDashboard = () => {
   const fetchApplication = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('/api/applications/my', {
+  const response = await fetch('https://api.carthagedynasty.com:8443/api/applications/my', {
         headers: {
           'Authorization': `Bearer ${token}`
         }

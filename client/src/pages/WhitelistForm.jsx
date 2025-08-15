@@ -25,7 +25,7 @@ const WhitelistForm = () => {
   const checkExistingApplication = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('/api/applications/my', {
+  const response = await fetch('https://api.carthagedynasty.com:8443/api/applications/my', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -92,7 +92,7 @@ const WhitelistForm = () => {
     
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('/api/applications', {
+  const response = await fetch('https://api.carthagedynasty.com:8443/api/applications', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

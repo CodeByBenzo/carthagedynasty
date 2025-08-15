@@ -43,12 +43,12 @@ const AdminDashboard = () => {
       const token = localStorage.getItem('token');
       
       // Fetch applications
-      const appsResponse = await fetch('/api/admin/applications', {
+  const appsResponse = await fetch('https://api.carthagedynasty.com:8443/api/admin/applications', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       
       // Fetch users
-      const usersResponse = await fetch('/api/admin/users', {
+  const usersResponse = await fetch('https://api.carthagedynasty.com:8443/api/admin/users', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       
@@ -72,7 +72,7 @@ const AdminDashboard = () => {
     setReviewing(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`/api/admin/applications/${selectedApplication.id}`, {
+  const response = await fetch(`https://api.carthagedynasty.com:8443/api/admin/applications/${selectedApplication.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ const AdminDashboard = () => {
   const handlePromoteUser = async (userId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`/api/admin/users/${userId}/promote`, {
+  const response = await fetch(`https://api.carthagedynasty.com:8443/api/admin/users/${userId}/promote`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -122,7 +122,7 @@ const AdminDashboard = () => {
   const handleBanUser = async (userId, isBanned) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`/api/admin/users/${userId}/ban`, {
+  const response = await fetch(`https://api.carthagedynasty.com:8443/api/admin/users/${userId}/ban`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -147,7 +147,7 @@ const AdminDashboard = () => {
   const handleExport = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('/api/admin/export', {
+  const response = await fetch('https://api.carthagedynasty.com:8443/api/admin/export', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 

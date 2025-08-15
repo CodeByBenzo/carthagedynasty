@@ -33,7 +33,7 @@ function App() {
 
   const fetchUser = async (token) => {
     try {
-  const response = await fetch('/api/auth/me', {
+  const response = await fetch('https://api.carthagedynasty.com:8443/api/auth/me', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -55,7 +55,7 @@ function App() {
 
   const login = async (username, password) => {
     try {
-  const response = await fetch('/api/auth/login', {
+  const response = await fetch('https://api.carthagedynasty.com:8443/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -82,7 +82,7 @@ function App() {
 
   const signup = async (userData) => {
     try {
-  const response = await fetch('/api/auth/register', {
+  const response = await fetch('https://api.carthagedynasty.com:8443/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
